@@ -81,7 +81,7 @@ li code,td code{font:13px Menlo,monospace;background:#eef3ec;padding:2px 6px;bor
 <h3>关于“人”和“电脑”</h3>
 <table class="tools gloss"><thead><tr><th>手册里的说法</th><th>意思</th></tr></thead><tbody>
 <tr><td>菲律宾 Mac<br>远程 Mac / 目标 Mac</td><td>都是同一个意思：放在菲律宾办公室、被远程连接的那台苹果电脑。</td></tr>
-<tr><td>Old / New</td><td>菲律宾的两台电脑。在 Jump 里的名字是 Philippines QA - Old 和 Philippines QA - New。Old 有时也显示为 Kumu’s MacBook Air，是同一台旧电脑。</td></tr>
+<tr><td>Old / New</td><td>菲律宾的两台电脑。在 Jump 里的名字是 Philippines QA - Old 和 Philippines QA - New。Old 有时也显示为 Kumu’s MacBook Air，是同一台旧电脑。电脑名称以后可能调整，以管理员提供的最新信息为准。</td></tr>
 <tr><td>自己的电脑</td><td>你手边正在用的电脑，Mac 或 Windows 都可以。</td></tr>
 <tr><td>现场同事</td><td>人在菲律宾、能直接摸到那台 Mac 的同事。</td></tr>
 <tr><td>远程操作人员</td><td>不在菲律宾、通过网络连接那台 Mac 的人（大多数读者是这个角色）。</td></tr>
@@ -113,7 +113,7 @@ li code,td code{font:13px Menlo,monospace;background:#eef3ec;padding:2px 6px;bor
 <tr><td>Workspace（工作区）</td><td>在某个项目里，为一件具体任务开的工作空间。一个任务一个工作区。</td></tr>
 <tr><td>分支</td><td>Git 的功能。可以理解成代码的“一份草稿”，改好了再合并回正式版本。</td></tr>
 <tr><td>worktree</td><td>Git 的功能。给同一个项目再开一个独立的文件夹，这样两个人各改各的，不会互相打架。</td></tr>
-<tr><td>FileVault</td><td>Mac 的磁盘加密功能。开启后，电脑重启时必须有人在现场输入密码才能进入系统。</td></tr>
+<tr><td>FileVault</td><td>Mac 的磁盘加密功能。开启后，电脑重启后可能需要有人在现场解锁；能否远程恢复取决于配置，应提前实际验证一次。</td></tr>
 </tbody></table>
 <a class="next" href="#keys">继续：四套账号密码别混<span>→</span></a></section>
 
@@ -126,13 +126,14 @@ li code,td code{font:13px Menlo,monospace;background:#eef3ec;padding:2px 6px;bor
 <tr><td><b>Paseo 里出现 Password / Password required</b></td><td>这台主机的 Paseo 访问密码</td><td>Old 和 New 的密码不一样，分别保管。</td></tr>
 <tr><td><b>Terminal 里 Claude 要求登录</b></td><td>公司批准的 Claude 账号</td><td>已经配好的电脑只需要检查，不要切换成别人的账号。</td></tr>
 </tbody></table>
-<div class="callout warn"><b>安全守则</b><ul><li>账号、密码、配对链接都找管理员要，由管理员单独发给你。</li><li>配对链接和二维码等同于密码，同样要保密。</li><li>不要把密码、配对链接、二维码、邮件验证码、授权链接发到公共群、群公告、公共文档或代码仓库里。</li><li>截图发给别人之前，先把上面这些信息遮住。</li></ul></div>
+<div class="callout warn"><b>安全守则</b><ul><li>账号、密码、配对链接都找管理员要，由管理员单独发给你。电脑名称和密码可能更换，一律以管理员提供的最新信息为准。</li><li>配对链接和二维码等同于密码，同样要保密。</li><li>不要把密码、配对链接、二维码、邮件验证码、授权链接发到公共群、群公告、公共文档或代码仓库里。</li><li>截图发给别人之前，先把上面这些信息遮住。</li></ul></div>
 <a class="next" href="#install-host">继续：首次安装 A<span>→</span></a></section>
 
 <!-- ============ 安装 A ============ -->
 <section class="chapter install" id="install-host" data-title="菲律宾电脑安装 Connect"><header class="section-head"><span class="eyebrow">首次安装 A / JUMP</span><h2>菲律宾电脑安装 Connect</h2>
 <dl class="meta"><div><dt>谁来做</dt><dd>菲律宾现场同事（人要在电脑旁边）</dd></div><div><dt>在哪台电脑</dt><dd>菲律宾的 Mac</dd></div><div><dt>做完的效果</dt><dd>这台 Mac 允许被远程连接</dd></div></dl></header>
 <p>这一节的目的：给菲律宾 Mac 装上“被控端”软件 Connect。首次安装需要输入管理员密码、打开系统权限，所以必须有人在电脑旁边操作；完成后再交给远程同事接手。</p>
+<div class="callout tip"><b>现场的人只需要做三件事</b><ol><li>安装 Connect 并打开系统权限（本节第 1 到第 4 小步）。</li><li>把临时访问链接发给远程的人（本节第 5 小步）。</li><li>对方发起连接时，点一下“允许”。</li></ol>之后的长期授权、安装 Paseo、设置密码等全部配置，都由远程的人连上来完成，现场的人不需要懂这些。</div>
 
 <h3 class="step"><span>1</span>下载 Connect</h3>
 <ol class="sub"><li>在菲律宾 Mac 上打开 Safari 或 Chrome 浏览器。</li><li>打开 <a href="https://jumpdesktop.com/download.html" target="_blank" rel="noreferrer">Jump 官方下载页</a>。</li><li>在 Mac 区域点击 <b>Connect for macOS</b>（见下图绿色框）。</li></ol>
@@ -154,9 +155,14 @@ li code,td code{font:13px Menlo,monospace;background:#eef3ec;padding:2px 6px;bor
 <ul class="sub"><li>点 Connect 的齿轮图标，在 General 里确认 <b>Start Jump Desktop when my computer starts</b>（开机自动启动）是打开的。</li><li>电脑一直插着电源、连着网络。</li><li>关闭电脑的自动睡眠。显示器可以熄屏，没有影响。</li><li>如果是笔记本，不要直接合上盖子，否则会进入休眠。</li></ul>
 <div class="callout warn"><b>关于重启和 FileVault</b>如果这台 Mac 开了 FileVault（磁盘加密），重启后可能需要现场的人输入密码才能进入系统。不要为了省事直接关闭磁盘加密。正确做法是：趁现场同事还在，测试一次“重启后能否恢复远程连接”。</div>
 
-<p class="done"><span>✓ 做完后，把这句话发给远程同事</span>“Connect 已安装、系统权限已开启，电脑保持接电和联网，请提供授权方式。”</p>
+<h3 class="step"><span>5</span>把临时访问链接发给远程的人</h3>
+<p>到这里，远程的人还连不上这台电脑。先给对方一条临时链接，让对方连上来接手后面的配置。</p>
+<ol class="sub"><li>在 Connect 里找到屏幕共享链接，是一条 <code>jumpto.me/…</code> 开头的网址。</li><li>复制它，通过私密渠道发给要接手的人。</li><li>留在电脑旁边。对方打开链接发起连接时，屏幕上会弹出请求，点“允许”。</li></ol>
+<div class="callout warn"><b>先别离开</b>临时链接每次连接都要现场点允许。在远程的人配置好长期访问、并验证通过之前，请保持可联系。</div>
+
+<p class="done"><span>✓ 做完后，把这句话连同临时链接一起发给远程同事</span>“Connect 已安装、系统权限已开启，电脑保持接电和联网。这是临时访问链接，你连接时我来点允许。”</p>
 <p class="source">官方参考：<a href="https://jumpdesktop.com/download.html" target="_blank" rel="noreferrer">下载页面</a> · <a href="https://docs.jumpdesktop.com/connect/macos-permissions/" target="_blank" rel="noreferrer">macOS 权限</a> · <a href="https://docs.jumpdesktop.com/connect/connect-codes/" target="_blank" rel="noreferrer">Connect Code</a> · <a href="https://docs.jumpdesktop.com/connect/unattended-access/" target="_blank" rel="noreferrer">无人值守</a></p>
-<a class="next" href="#install-viewer">继续 B：自己的电脑安装 Jump<span>→</span></a></section>
+<a class="next" href="#install-viewer">继续 B：自己的电脑安装 Jump（由远程同事操作）<span>→</span></a></section>
 
 <!-- ============ 安装 B ============ -->
 <section class="chapter install" id="install-viewer" data-title="自己的电脑安装控制端"><header class="section-head"><span class="eyebrow">首次安装 B / JUMP</span><h2>自己的电脑安装 Jump（控制端）</h2>
@@ -192,6 +198,18 @@ li code,td code{font:13px Menlo,monospace;background:#eef3ec;padding:2px 6px;bor
 <section class="chapter install" id="install-access" data-title="授权并测试首次连接"><header class="section-head"><span class="eyebrow">首次安装 C / JUMP</span><h2>授权并测试首次连接</h2>
 <dl class="meta"><div><dt>谁来做</dt><dd>远程操作人员和菲律宾现场同事一起配合</dd></div><div><dt>在哪台电脑</dt><dd>两边都要操作</dd></div><div><dt>做完的效果</dt><dd>不需要现场点同意，你就能连上并操作那台 Mac</dd></div></dl></header>
 <p>这一节的目的：让菲律宾 Mac “认识”你的 Jump 账号，允许你连接。</p>
+<h3>先看全貌：从“临时接手”到“随时能连”一共五步</h3>
+<ol class="sub"><li><b>现场同事安装 Connect。</b>打开屏幕录制、辅助功能、Remote Desktop 等权限，电脑保持接电、联网、不休眠。这一步就是<a href="#install-host">安装 A</a>。</li><li><b>现场同事把临时访问链接发给你。</b>你打开链接发起连接，对方点“允许”，你就可以先接手操作。</li><li><b>配置长期访问权限。</b>用个人 Connect Code 或公司团队授权，二选一。</li><li><b>确认电脑出现在你的电脑列表里。</b>用获授权的 Jump 账号登录控制端，能看到这台电脑。名称最好明确标注 Old / New。</li><li><b>断开临时连接，再从电脑列表重新连接。</b>验证不再需要现场的人点同意。</li></ol>
+<div class="callout tip"><b>一句话分清两种连接</b><ul><li><b>临时链接（jumpto.me/…）：</b>只负责让你第一次接手，每次都要现场的人点允许。</li><li><b>长期授权：</b>电脑加进你的电脑列表，以后随时能连，不需要现场有人。</li></ul>只把临时链接收藏起来，不等于完成了长期访问配置。</div>
+
+<h2 class="inner-title">第一阶段：先用临时链接接手</h2>
+<p>这是推荐的做法：现场同事只负责发链接和点允许，后面的全部配置由你在远程桌面里完成，对方不需要懂 Jump。只有现场同事自己会做第二阶段的操作时，才可以跳过这一阶段。</p>
+<div class="callout tip"><b>接手之后，可以让 Claude 帮你配置</b>用临时链接连上以后，剩下的配置（长期授权、安装 Paseo、设置密码等）不一定要自己一步步手动做，也可以让你自己电脑上的 Claude 通过这个远程连接协助完成。输入密码、点击授权这类步骤，建议由你本人操作。</div>
+<ol class="sub"><li><b>现场同事：</b>在菲律宾 Mac 的 Connect 里找到屏幕共享链接，复制这条 <code>jumpto.me/…</code> 链接，发给要接手的人。<a href="#install-host">安装 A</a> 第 5 步已经发过的，直接用那一条。</li><li><b>你：</b>在自己的电脑上打开这条链接，发起连接。</li><li><b>现场同事：</b>在菲律宾 Mac上点击“允许”。</li><li><b>你：</b>看到远程桌面后，移动鼠标、输入几个字，确认能操作。</li></ol>
+<div class="callout warn"><b>接手之后先别让现场的人走</b>这时候的连接还是临时的，一旦断开就要对方重新点允许。请对方保持可联系，直到第三阶段验证通过。</div>
+
+<h2 class="inner-title">第二阶段：配置长期访问权限</h2>
+<p>下面两种方式里凡是写“在菲律宾 Mac上”的操作：如果你已经用临时链接接手了，就由你自己在 Jump 窗口里完成；否则由现场的人完成。</p>
 <div class="callout tip"><b>先选一条路，只做一条</b>授权有两种方式，公司用哪种就做哪种，不用两种都做。不确定用哪种？问管理员。已经授权过的电脑可以直接连接，跳到下面的“测试第一次连接”。</div>
 
 <div class="method"><h3>方式一：公司已经有 Jump 团队</h3>
@@ -204,9 +222,9 @@ li code,td code{font:13px Menlo,monospace;background:#eef3ec;padding:2px 6px;bor
 <ol class="sub"><li><b>你（远程操作人员）：</b>登录 <a href="https://app.jumpdesktop.com/" target="_blank" rel="noreferrer">Jump Dashboard</a>，在 Home 页的 <b>Your Connect Codes</b> 里复制自己的 Connect Code。如果没有，就创建一个 Personal Connect Code。</li><li><b>你：</b>把这串代码和你的账号名称发给现场同事。</li><li><b>现场同事：</b>在菲律宾 Mac 上打开 Connect → <b>Add a remote access user</b> → 进入浏览器登录入口 → <b>Give remote access to someone else</b>，输入收到的代码。</li><li><b>现场同事：</b>核对页面上显示的账号名称是不是对的，然后点 <b>Allow</b>。如果页面要求先登录，现场同事用自己获准使用的 Jump 账号登录即可。<b>不需要</b>让远程同事提供 Jump 密码。</li><li><b>双方一起确认：</b>Connect 里出现了被授权的用户；你在 Jump Desktop 用同一个账号登录后，能看到这台 Mac。</li></ol></div>
 <div class="callout tip"><b>两种 Connect Code 的区别</b><ul><li><b>团队的 Connect Code：</b>用来把一台电脑加入团队。</li><li><b>个人的 Connect Code：</b>用来给某一个人开远程访问权限。</li></ul>两者用途不同，管理员发代码时应该写明是哪一种。</div>
 
-<h2 class="inner-title">授权完成后：测试第一次连接</h2>
+<h2 class="inner-title">第三阶段：从电脑列表重新连接，验证无人值守</h2>
 <h3 class="step"><span>1</span>连接并输入 Mac 的系统密码</h3>
-<ol class="sub"><li>在自己的 Jump Desktop 里点击 Old 或 New。</li><li>如果弹出用户名和密码，输入<b>菲律宾 Mac 的系统用户名和密码</b>（不是 Jump 账号）。</li></ol>
+<ol class="sub"><li>如果你是用临时链接连上的，先断开这次临时连接。</li><li>打开自己的 Jump Desktop，确认电脑列表里已经出现 Old 或 New，点击它。</li><li>如果弹出用户名和密码，输入<b>菲律宾 Mac 的系统用户名和密码</b>（不是 Jump 账号）。</li></ol>
 <p>不知道 Mac 的用户名？请现场同事在那台 Mac 的 Terminal 里输入 <code>whoami</code> 再按回车，显示出来的就是用户名。</p>
 <table class="tools"><thead><tr><th>屏幕上出现什么</th><th>填哪一套</th></tr></thead><tbody><tr><td>Jump 登录</td><td>获授权的 Jump 账号</td></tr><tr><td>连接 Mac 时的系统登录</td><td>菲律宾 Mac 的本地用户名与系统密码</td></tr><tr><td>Paseo Password</td><td>该主机单独设置的 Paseo 访问密码</td></tr></tbody></table>
 
@@ -218,7 +236,8 @@ li code,td code{font:13px Menlo,monospace;background:#eef3ec;padding:2px 6px;bor
 <table class="tools"><thead><tr><th>方式</th><th>特点</th><th>适合什么时候</th></tr></thead><tbody><tr><td>jumpto.me/… 屏幕共享链接</td><td>以请求屏幕共享的方式连接，通常要现场同事点同意</td><td>临时协作</td></tr><tr><td>远程访问用户或团队访问权</td><td>无人值守，不需要现场有人</td><td>长期使用（我们要的是这个）</td></tr></tbody></table>
 <p>不要把临时链接收藏起来，就当成已经配好了无人值守。</p>
 
-<p class="done"><span>✓ 验收方法</span>断开连接，再重新连一次。如果不需要现场同事点同意，并且能正常登录 Mac，就算通过。通过后再继续配置 Paseo。</p>
+<p class="done"><span>✓ 验收方法</span>断开连接，再从电脑列表重新连一次。如果不需要现场同事点同意，并且能正常登录 Mac，就算通过。通过后再继续配置 Paseo。</p>
+<div class="callout warn"><b>“随时能连”的前提</b>以后能随时连接，前提仍然是：电脑开机、联网、没有休眠、Connect 正常运行。电脑重启后的 FileVault 解锁也要提前验证一次，见<a href="#install-host">安装 A</a> 第 4 步。</div>
 <p class="source">官方参考：<a href="https://jumpdesktop.com/download.html" target="_blank" rel="noreferrer">下载页面</a> · <a href="https://docs.jumpdesktop.com/connect/macos-permissions/" target="_blank" rel="noreferrer">macOS 权限</a> · <a href="https://docs.jumpdesktop.com/connect/connect-codes/" target="_blank" rel="noreferrer">Connect Code</a> · <a href="https://docs.jumpdesktop.com/connect/unattended-access/" target="_blank" rel="noreferrer">无人值守</a></p>
 <a class="next" href="#install-paseo">继续 D：菲律宾电脑安装 Paseo<span>→</span></a></section>
 
@@ -245,7 +264,7 @@ li code,td code{font:13px Menlo,monospace;background:#eef3ec;padding:2px 6px;bor
 <p><b>第二条：</b>启动 Claude Code。</p>
 <div class="code"><div class="codebar"><span>菲律宾 Mac · Terminal</span><button class="copy">复制命令</button></div><pre><code>claude</code></pre></div>
 <p>启动后随便发一个简单问题，能正常回复就说明登录没问题。</p>
-<div class="callout tip"><b>遇到这些情况怎么办</b><ul><li><b>提示要登录：</b>按 Claude Code 官方流程，用公司账号完成授权，然后再发一个简单问题确认能回复。</li><li><b>提示命令不存在：</b>说明还没装终端版，先按 <a href="https://code.claude.com/docs/en/setup" target="_blank" rel="noreferrer">Claude Code 官方安装说明</a>安装。</li><li><b>Claude 桌面 App 已经登录了：</b>那不算。桌面 App 已登录，不代表终端版已登录，两者要分别登录。</li></ul></div>
+<div class="callout tip"><b>遇到这些情况怎么办</b><ul><li><b>提示要登录：</b>按 Claude Code 官方流程，用公司账号完成授权，然后再发一个简单问题确认能回复。</li><li><b>提示命令不存在：</b>有两种可能。一是刚装完、路径（PATH）还没生效：新开一个 Terminal 窗口再试一次。二是确实没装：按 <a href="https://code.claude.com/docs/en/setup" target="_blank" rel="noreferrer">Claude Code 官方安装说明</a>安装终端版。</li><li><b>Claude 桌面 App 已经登录了：</b>那不算。桌面 App 已登录，不代表终端版已登录，两者要分别登录。</li></ul></div>
 <div class="callout warn"><b>注意保密</b>不要把邮件验证码或授权链接发进公共聊天。</div>
 
 <h3 class="step"><span>4</span>确认 Paseo 能用上 Claude</h3>
@@ -497,7 +516,11 @@ git config --show-origin --get user.email
 git remote -v
 gh auth status</code></pre></div>
 <table class="tools"><thead><tr><th>命令</th><th>它告诉你什么</th></tr></thead><tbody><tr><td>前两条 git config</td><td>提交时署名的姓名和邮箱，以及这个设置写在哪个文件里</td></tr><tr><td>git remote -v</td><td>这个项目连接的是哪个远程仓库</td></tr><tr><td>gh auth status</td><td>gh 工具当前登录的是哪个 GitHub 账号</td></tr></tbody></table>
-<div class="callout warn"><b>共享电脑上要特别小心</b><ul><li>不要把令牌或私钥发给别人。</li><li>不要随意执行 <code>gh auth switch</code>。它会改变这台电脑上所有项目使用的默认账号，影响到其他人。</li><li>正确做法：由管理员为每个项目配置对应的 SSH 别名，以及独立的 gh 配置目录或启动环境。</li></ul></div>
+<p><b>还要多查一步：push 实际用的是哪个账号。</b><code>gh auth status</code> 只说明 gh 工具登录的是谁，不能证明 git push 用的也是同一个账号。请看 <code>git remote -v</code> 显示的地址：</p>
+<ul class="sub"><li><b>地址以 <code>git@</code> 开头（SSH 方式）：</b><code>git@</code> 后面、冒号前面的那一段，是 SSH 主机或别名，例如 <code>github.com</code>。把它填进下面的命令再执行。返回 “Hi 用户名! You've successfully authenticated…” 里的用户名，就是 push 实际使用的账号。</li><li><b>地址以 <code>https://</code> 开头：</b>push 用的是这台电脑保存的 HTTPS 凭据，不一定和 gh 登录的账号相同。拿不准时请管理员确认。</li></ul>
+<div class="code"><div class="codebar"><span>远程 Mac · Terminal · 把尖括号部分换成实际的主机或别名</span><button class="copy">复制命令</button></div><pre><code>ssh -T git@&lt;SSH 主机或别名&gt;</code></pre></div>
+<p>如果项目单独配置了 SSH 命令或密钥，实际身份以项目配置为准，这种情况请管理员帮忙确认。参考：<a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/testing-your-ssh-connection" target="_blank" rel="noreferrer">GitHub 官方的 SSH 连接测试说明</a>。</p>
+<div class="callout warn"><b>共享电脑上要特别小心</b><ul><li>不要把令牌或私钥发给别人。</li><li>不要随意执行 <code>gh auth switch</code>。它会影响同一个系统用户下、共用同一份 gh 配置的其他项目，可能连带影响到别人。使用独立 gh 配置目录或环境变量令牌的项目，结果可能不同。</li><li>正确做法：由管理员为每个项目配置对应的 SSH 别名，以及独立的 gh 配置目录或启动环境。</li></ul></div>
 <a class="next" href="#chapter-7">下一章：出问题了怎么办 <span>→</span></a></section>
 
 <!-- ============ 第 7 章 ============ -->
@@ -508,7 +531,7 @@ gh auth status</code></pre></div>
 
 <details class="faq"><summary>Jump 看不到电脑或连接不上</summary><div class="answer"><p>按顺序检查：</p><ol class="sub"><li>登录的 Jump 账号对不对。</li><li>这个账号有没有这台电脑的访问权限。</li><li>团队套餐或席位状态是否正常。</li><li>菲律宾 Mac 有没有电、有没有网络。</li><li>Connect 是否在运行、系统权限是否完整。</li></ol><p>不要只因为连接失败，就认定是需要续费。</p><p>如果 Mac 关机或重启后，停在 FileVault 解锁界面，可能需要现场的人完成开机和登录。另外，显示器熄屏和电脑休眠不一样：熄屏没有影响，休眠或断网才会导致连不上。</p></div></details>
 
-<details class="faq"><summary>Paseo 离线或一直 <strong>Connecting</strong></summary><div class="answer"><ol class="sub"><li>先通过 Jump 连上去，检查电脑是否在线、Paseo 是否在运行。</li><li>再看 <strong>Host</strong> 和 Relay 的状态。</li></ol><p>Jump 正常，不代表 Paseo 一定正常，这是两个独立的东西。</p><p>需要重启服务时，先确认当前的任务状态。不要随手点“重启并关闭终端”，那样会中断其他人正在进行的工作。</p></div></details>
+<details class="faq"><summary>Paseo 离线或一直 <strong>Connecting</strong></summary><div class="answer"><ol class="sub"><li>先通过 Jump 连上去，检查电脑是否在线、Paseo 是否在运行。电脑重启过的话，Paseo 可能没有自动打开，从 Applications 手动打开它。</li><li>再看 <strong>Host</strong> 和 Relay 的状态。</li></ol><p>Jump 正常，不代表 Paseo 一定正常，这是两个独立的东西。</p><p>需要重启服务时，先确认当前的任务状态。不要随手点“重启并关闭终端”，那样会中断其他人正在进行的工作。</p></div></details>
 
 <details class="faq"><summary>提示 <strong>Password required</strong> 或密码错误</summary><div class="answer"><ul class="sub"><li>确认用的是<b>目标主机</b>的 Paseo 密码。Old 和 New 的密码不同。</li><li>主机已经添加，但没有输入密码的地方：按<a href="#chapter-4">第 4 章</a>的方法移除后重新添加。</li><li>忘记密码：交给管理员在远程 Mac 上重新设置，保存后重启服务（见<a href="#paseo-password">安装 E</a>）。</li></ul></div></details>
 
@@ -533,7 +556,7 @@ gh auth status</code></pre></div>
 <div class="callout warn"><b>一条一条执行</b>不要一次复制多条命令一起粘贴。每一条都要看到结果、确认保存成功，再执行下一条。</div>
 
 <h3>日常维护</h3>
-<ul class="sub"><li>定期检查磁盘空间、供电、网络，以及开机后各项服务的状态。</li><li>更新 Claude Code 之后，验证终端里还能正常使用。</li><li>更新由 Paseo Desktop 管理的 daemon 时：在目标 Mac 上更新 Paseo Desktop，然后再做一次连接和模型检查。</li></ul>
+<ul class="sub"><li>定期检查磁盘空间、供电、网络，以及开机后各项服务的状态。</li><li>每次重启电脑后，确认三件事：Jump 能连上、Paseo 里主机显示 Online、Claude 能回复。</li><li>更新 Claude Code 之后，验证终端里还能正常使用。</li><li>更新由 Paseo Desktop 管理的 daemon 时：在目标 Mac 上更新 Paseo Desktop，然后再做一次连接和模型检查。</li></ul>
 
 <h3>新成员接入完成清单</h3>
 <p>新同事接入后，逐项打勾确认：</p>
