@@ -221,7 +221,7 @@ li code,td code{font:13px Menlo,monospace;background:#eef3ec;padding:2px 6px;bor
 
 <h2 class="inner-title">第一阶段：先用临时链接接手</h2>
 <p>这是推荐的做法：现场的人只负责发链接和点允许，后面的全部配置由你在远程桌面里完成，对方不需要懂 Jump。只有远程电脑就在你手边，或者现场的人自己会做第二阶段的操作时，才可以跳过这一阶段。</p>
-<div class="callout tip"><b>接手之后，可以让 Claude 帮你配置</b>用临时链接连上以后，剩下的配置（长期授权、安装 Paseo、设置密码等）不一定要自己一步步手动做，也可以让你自己电脑上的 Claude 通过这个远程连接协助完成。输入密码、点击授权这类步骤，建议由你本人操作。</div>
+<div class="callout tip"><b>接手之后，能不能让 AI 帮你配置？</b>要看条件。Jump 连上了，不代表 AI 工具就自动能操作远程桌面。<ul><li><b>你用的 AI 工具已经配置了电脑操作能力，并且获得了授权：</b>可以让它协助操作 Jump 远程窗口，完成剩下的配置（长期授权、安装 Paseo 等）。</li><li><b>否则：</b>按本手册一步步手动完成。</li></ul>无论哪种情况，输入密码、点击授权这类步骤，建议由你本人操作。</div>
 <ol class="sub"><li><b>现场的人：</b>在远程电脑的 Connect 里找到屏幕共享链接，复制这条 <code>jumpto.me/…</code> 链接，发给要接手的人。<a href="#step-1">第 1 步</a>里已经发过的，直接用那一条。</li><li><b>你：</b>在自己的电脑上打开这条链接，发起连接。</li><li><b>现场的人：</b>在远程电脑上点击“允许”。</li><li><b>你：</b>看到远程桌面后，移动鼠标、输入几个字，确认能操作。</li></ol>
 <div class="callout warn"><b>接手之后先别让现场的人走</b>这时候的连接还是临时的，一旦断开就要对方重新点允许。请对方保持可联系，直到第三阶段验证通过。</div>
 
@@ -266,8 +266,8 @@ li code,td code{font:13px Menlo,monospace;background:#eef3ec;padding:2px 6px;bor
 <h3 class="step"><span>1</span>安装 Claude Code 终端版</h3>
 <ol class="sub"><li>在远程电脑上打开 Terminal（终端）：按 <code>Command + 空格</code>，输入 Terminal，按回车。</li><li>执行下面的命令，看看是不是已经装过。操作方法：点“复制命令” → 粘贴到 Terminal → 按回车。</li></ol>
 <div class="code"><div class="codebar"><span>远程电脑 · Terminal</span><button class="copy">复制命令</button></div><pre><code>claude --version</code></pre></div>
-<ul class="sub"><li><b>显示了版本号：</b>已经安装，直接看下一小步。</li><li><b>提示命令不存在（command not found）：</b>还没装，按下面的方法安装。</li></ul>
-<p><b>安装方法：</b>在 Terminal 里执行官方的安装命令。</p>
+<ul class="sub"><li><b>显示了版本号：</b>已经安装，直接看下一小步。</li><li><b>提示命令不存在（command not found）：</b>先别急着安装，这不一定是没装。<ol><li>新开一个 Terminal 窗口，再执行一次上面的命令。</li><li>仍然找不到：可能是没装，也可能是装过但路径（PATH）没配置好。如果这台电脑以前有人装过 Claude Code，先按官方的 <a href="https://code.claude.com/docs/en/troubleshoot-install#command-not-found-claude-after-installation" target="_blank" rel="noreferrer">Fix your PATH 说明</a>检查。</li><li>确认确实没装过，再按下面的方法安装。</li></ol></li></ul>
+<p><b>安装方法（确认没装过才做）：</b>在 Terminal 里执行官方的安装命令。</p>
 <div class="code"><div class="codebar"><span>远程电脑 · Terminal · 官方安装命令</span><button class="copy">复制命令</button></div><pre><code>curl -fsSL https://claude.ai/install.sh | bash</code></pre></div>
 <ol class="sub"><li>回车后耐心等待。下载过程中不显示进度，这是正常的，不要关窗口。</li><li>安装结束后，<b>新开一个 Terminal 窗口</b>（旧窗口不认新装的命令）。</li><li>在新窗口里再执行一次 <code>claude --version</code>，显示版本号就是装好了。</li></ol>
 <div class="callout tip"><b>装完还是提示命令不存在？</b>先别急着重装。这通常不是没装上，而是安装路径（PATH）还没生效。<ul><li>确认你是在<b>新开的</b> Terminal 窗口里试的。</li><li>还不行，按官方的 <a href="https://code.claude.com/docs/en/troubleshoot-install#command-not-found-claude-after-installation" target="_blank" rel="noreferrer">Fix your PATH 说明</a>处理。</li><li>安装命令本身报错，或想用其他安装方式，看 <a href="https://code.claude.com/docs/en/setup" target="_blank" rel="noreferrer">Claude Code 官方安装说明</a>。命令以官方页面的最新内容为准。</li></ul></div>
